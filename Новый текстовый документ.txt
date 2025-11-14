@@ -1,0 +1,15 @@
+frontend/
+├─ index.html
+├─ styles.css
+├─ themes.css
+├─ i18n.js
+├─ themes.js
+├─ app.js
+├─ ai.js
+└─ assets/
+    ├─ logo.png
+    ├─ avatar.png
+    ├─ coin.svg
+    └─ 3d-elements/
+        ├─ cube.obj
+        └─ sphere.obj

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Kids Game Platform with AI</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="themes.css">
+</head>
+<body>
+<header>
+    <img src="assets/logo.png" alt="Logo" class="logo">
+    <select id="languageSwitcher"></select>
+    <select id="themeSwitcher"></select>
+</header>
+
+<main>
+    <h1 id="title"></h1>
+    <p id="description"></p>
+    <button id="startBtn"></button>
+
+    <div class="xp-container">
+        <div id="xpBar" class="xp-bar"></div>
+    </div>
+    <p>Level: <span id="levelDisplay">1</span></p>
+    <p>Coins: <span id="coinDisplay">0</span> 💰</p>
+
+    <div class="threeD">
+        <img src="assets/3d-elements/cube.obj" alt="3D Cube">
+    </div>
+
+    <section id="ai-section">
+        <h2>Ask AI a Question</h2>
+        <textarea id="ai-input" placeholder="Type your question here..."></textarea>
+        <button id="ai-btn">Ask AI</button>
+        <div id="ai-output"></div>
+    </section>
+</main>
+
+<script src="i18n.js"></script>
+<script src="themes.js"></script>
+<script src="app.js"></script>
+<script src="ai.js"></script>
+</body>
+</html>
