@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="kk">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>QarzhyIQ — Complete</title>
+<link rel="stylesheet" href="styles.css"></head>
+<body>
+<header class="topbar"><div class="container"><h1>QarzhyIQ</h1><p class="tagline">Do tasks — Earn money</p></div></header>
+<main class="container">
+<section id="balance" class="card"><h2>Баланс: <span id="bal">120 ₸</span></h2><div class="progress"><div id="pf" style="width:24%"></div></div></section>
+<section id="tasks" class="card"><h3>Күнделікті тапсырмалар</h3><div class="tasks-grid">
+  <div class="task"><h4>Математика</h4><p>+50 ₸</p><button data-amount="50" class="task-btn">Тапсыру</button></div>
+  <div class="task"><h4>Кітап оқу</h4><p>+25 ₸</p><button data-amount="25" class="task-btn">Тапсыру</button></div>
+  <div class="task"><h4>Бөлмені жинау</h4><p>+30 ₸</p><button data-amount="30" class="task-btn">Тапсыру</button></div>
+  <div class="task"><h4>Экран уақытын азайту</h4><p>+20 ₸</p><button data-amount="20" class="task-btn">Тапсыру</button></div>
+</div></section>
+
+<section id="games" class="card"><h3>Ойындар</h3>
+  <button id="openEarn">Earn & Save</button>
+  <button id="openChores">House Chores Rush</button>
+  <button id="openSource">Money Source Finder</button>
+  <button id="openQuiz">Budget Quiz</button>
+</section>
+
+<section id="shop" class="card"><h3>Shop</h3>
+  <div class="shop-grid">
+    <div class="item"><img src="assets/sticker.svg"><h4>Sticker</h4><p>80 ₸</p><button data-price="80" class="buy">Buy</button></div>
+    <div class="item"><img src="assets/hat.svg"><h4>Hat</h4><p>200 ₸</p><button data-price="200" class="buy">Buy</button></div>
+    <div class="item"><img src="assets/bg.svg"><h4>Background</h4><p>400 ₸</p><button data-price="400" class="buy">Buy</button></div>
+  </div>
+</section>
+
+</main>
+<div id="modal" class="modal" style="display:none"></div>
+<script src="app.js"></script>
+</body></html>
+
+<audio id="coin-sound" src="coin.mp3"></audio>
+<audio id="error-sound" src="click.wav"></audio>

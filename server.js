@@ -1,0 +1,20 @@
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const { Low, JSONFile } = require('lowdb');
+const { nanoid } = require('nanoid');
+const path = require('path');
+const app = express();
+app.use(cors()); app.use(bodyParser.json());
+const file = path.join(__dirname,'db.json');
+const adapter = new JSONFile(file);
+const db = new Low(adapter);
+async function init(){ await db.read(); db.data ||= { users: [], purchases: [] }; await db.write(); }
+init();
+app.get('/api/ping', (req,res)=> res.json({ok:true}));
+app.post('/api/register', async (req,res)=>{ await db.read(); const id=nanoid(8); const user={id,name:req.body.name||'Student',balance:0,avatar:'avatar1.svg',tasks:[]}; db.data.users.push(user); await db.write(); res.json({ok:true,user}); });
+app.get('/api/user/:id', async(req,res)=>{ await db.read(); const u=db.data.users.find(x=>x.id===req.params.id); if(!u) return res.status(404).json({error:'not found'}); res.json({ok:true,user:u}); });
+app.post('/api/user/:id/award', async(req,res)=>{ await db.read(); const u=db.data.users.find(x=>x.id===req.params.id); if(!u) return res.status(404).json({error:'not found'}); const amount = parseInt(req.body.amount||0); u.balance=(u.balance||0)+amount; u.tasks.push({id:nanoid(6),amount,date:Date.now(),note:req.body.note||''}); await db.write(); res.json({ok:true,user:u}); });
+app.post('/api/user/:id/buy', async(req,res)=>{ await db.read(); const u=db.data.users.find(x=>x.id===req.params.id); if(!u) return res.status(404).json({error:'not found'}); const price=parseInt(req.body.price||0); if((u.balance||0)<price) return res.status(400).json({error:'not_enough'}); u.balance-=price; db.data.purchases.push({id:nanoid(8),userId:u.id,price,date:Date.now(),item:req.body.item||''}); await db.write(); res.json({ok:true,user:u}); });
+app.use('/', express.static(path.join(__dirname,'../frontend')));
+const PORT = process.env.PORT || 8080; app.listen(PORT, ()=> console.log('Server running on', PORT));
