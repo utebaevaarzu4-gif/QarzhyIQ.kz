@@ -1,1 +1,69 @@
-body{font-family:Arial,Helvetica,sans-serif;background:#f7fbff;color:#062135;margin:0}.container{max-width:1000px;margin:0 auto;padding:18px}.card{background:#fff;padding:14px;border-radius:10px;margin-bottom:12px;box-shadow:0 6px 18px rgba(12,38,84,0.06)}.tasks-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.task{padding:8px;border-radius:8px;background:linear-gradient(180deg,#fff,#fbfdff)}button{padding:8px 10px;border-radius:8px;border:0;background:#0b74de;color:#fff;cursor:pointer}.shop-grid{display:flex;gap:12px}.shop-grid .item{width:120px;text-align:center}#modal{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center}
+/* Premium-ish UI styles */
+:root{
+  --accent:#0b74de;
+  --accent-2:#06b6d4;
+  --bg:#f5f9ff;
+  --card:#ffffff;
+  --muted:#6b7280;
+  --glass: rgba(255,255,255,0.6);
+}
+*{box-sizing:border-box}
+body{margin:0;background:linear-gradient(180deg,var(--bg),#eef6ff);font-family:Inter,Segoe UI,Arial;color:#062135}
+.container{max-width:1100px;margin:0 auto;padding:20px}
+.topbar{background:transparent;padding:14px 0}
+.topbar-inner{display:flex;justify-content:space-between;align-items:center}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:58px;height:58px;border-radius:10px;box-shadow:0 6px 20px rgba(11,84,150,0.12)}
+.tagline{font-size:13px;color:var(--muted);margin:0}
+.controls{display:flex;gap:12px;align-items:center}
+.lang{border:0;background:#fff;padding:6px 10px;border-radius:8px;cursor:pointer}
+.lang.active{box-shadow:0 6px 18px rgba(11,116,222,0.12)}
+.ghost{background:transparent;border:1px solid rgba(9,30,66,0.06);padding:8px 10px;border-radius:8px;cursor:pointer}
+.grid{display:grid;grid-template-columns:2fr 1fr;gap:20px;padding-bottom:40px}
+.card{background:var(--card);border-radius:14px;padding:16px;box-shadow:0 10px 30px rgba(13,38,76,0.06)}
+.main-app .hero{display:flex;gap:18px;align-items:flex-start;justify-content:space-between}
+.hero-left h2{margin:0 0 8px;font-size:22px}
+.muted{color:var(--muted);font-size:14px}
+.cta-row{display:flex;gap:12px;margin-top:12px}
+.btn{padding:8px 12px;border-radius:10px;border:0;cursor:pointer;background:#eef6ff;color:var(--accent);font-weight:600}
+.btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#fff;box-shadow:0 8px 20px rgba(11,116,222,0.18)}
+.btn.small{padding:6px 10px;border-radius:8px;font-size:14px}
+.small{font-size:13px}
+.points-panel{display:flex;flex-direction:column;gap:12px}
+.points-top{display:flex;gap:12px;align-items:center}
+.coin-small{width:46px}
+.points-amount{font-size:28px;font-weight:800;color:var(--accent)}
+.progress{margin-top:8px}
+.progress-label{font-size:13px;color:var(--muted)}
+.progress-bar{height:10px;background:#eef6fb;border-radius:999px;overflow:hidden;margin-top:6px}
+.progress-bar > div{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:0;transition:width 800ms ease}
+
+.avatar-panel .avatars{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.avatar{width:58px;height:58px;border-radius:12px;overflow:hidden;cursor:pointer;border:2px solid transparent}
+.avatar.selected{border-color:var(--accent);box-shadow:0 8px 20px rgba(11,116,222,0.12);transform:translateY(-6px)}
+.profile-avatar{width:64px;border-radius:12px}
+
+.mission-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.mission{padding:12px;border-radius:12px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:0 8px 18px rgba(11,30,60,0.04)}
+.game-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.game-card{display:flex;gap:12px;align-items:center;padding:12px;border-radius:12px;background:#fff;justify-content:space-between}
+.video-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:12px}
+.profile{display:flex;gap:12px;align-items:center;padding:12px}
+.stats .stat-bar{height:10px;background:#eef6fb;border-radius:999px;overflow:hidden}
+.bar-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent-2));width:45%}
+.teacher-overview ul{padding-left:18px;margin:8px 0}
+.side-panel .card.small{padding:10px;margin-top:12px}
+
+.coin{position:fixed;width:48px;height:48px;background:url('coin.svg');background-size:cover;animation:float 5s infinite ease-in-out;opacity:0.9;pointer-events:none}
+.coin:nth-child(1){top:12%;left:4%;animation-duration:6s}
+.coin:nth-child(2){top:40%;right:6%;animation-duration:7.2s}
+.coin:nth-child(3){bottom:12%;left:36%;animation-duration:5.4s}
+
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-24px)}100%{transform:translateY(0)}}
+
+/* Responsive */
+@media (max-width:900px){
+  .grid{grid-template-columns:1fr; padding:12px}
+  .coin{display:none}
+  .mission-grid{grid-template-columns:1fr}
+}

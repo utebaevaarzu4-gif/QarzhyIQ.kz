@@ -1,37 +1,174 @@
 <!doctype html>
 <html lang="kk">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>QarzhyIQ — Complete</title>
-<link rel="stylesheet" href="styles.css"></head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>QarzhyIQ — Full Kids Platform</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
 <body>
-<header class="topbar"><div class="container"><h1>QarzhyIQ</h1><p class="tagline">Do tasks — Earn money</p></div></header>
-<main class="container">
-<section id="balance" class="card"><h2>Баланс: <span id="bal">120 ₸</span></h2><div class="progress"><div id="pf" style="width:24%"></div></div></section>
-<section id="tasks" class="card"><h3>Күнделікті тапсырмалар</h3><div class="tasks-grid">
-  <div class="task"><h4>Математика</h4><p>+50 ₸</p><button data-amount="50" class="task-btn">Тапсыру</button></div>
-  <div class="task"><h4>Кітап оқу</h4><p>+25 ₸</p><button data-amount="25" class="task-btn">Тапсыру</button></div>
-  <div class="task"><h4>Бөлмені жинау</h4><p>+30 ₸</p><button data-amount="30" class="task-btn">Тапсыру</button></div>
-  <div class="task"><h4>Экран уақытын азайту</h4><p>+20 ₸</p><button data-amount="20" class="task-btn">Тапсыру</button></div>
-</div></section>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="brand">
+        <img src="logo.svg" class="logo" alt="QarzhyIQ logo">
+        <div>
+          <h1>QarzhyIQ</h1>
+          <p class="tagline" data-kz="Қаржылық ойлауды үйретеміз" data-en="We teach financial thinking" data-ru="Мы учим финансовому мышлению">Қаржылық ойлауды үйретеміз</p>
+        </div>
+      </div>
 
-<section id="games" class="card"><h3>Ойындар</h3>
-  <button id="openEarn">Earn & Save</button>
-  <button id="openChores">House Chores Rush</button>
-  <button id="openSource">Money Source Finder</button>
-  <button id="openQuiz">Budget Quiz</button>
-</section>
+      <div class="controls">
+        <div class="lang-switch">
+          <button id="btnKZ" class="lang active">KZ</button>
+          <button id="btnEN" class="lang">EN</button>
+          <button id="btnRU" class="lang">RU</button>
+        </div>
+        <button id="teacherView" class="ghost">Teacher</button>
+      </div>
+    </div>
+  </header>
 
-<section id="shop" class="card"><h3>Shop</h3>
-  <div class="shop-grid">
-    <div class="item"><img src="assets/sticker.svg"><h4>Sticker</h4><p>80 ₸</p><button data-price="80" class="buy">Buy</button></div>
-    <div class="item"><img src="assets/hat.svg"><h4>Hat</h4><p>200 ₸</p><button data-price="200" class="buy">Buy</button></div>
-    <div class="item"><img src="assets/bg.svg"><h4>Background</h4><p>400 ₸</p><button data-price="400" class="buy">Buy</button></div>
-  </div>
-</section>
+  <main class="container grid">
+    <!-- LEFT: Main app -->
+    <section class="card main-app">
+      <div class="hero">
+        <div class="hero-left">
+          <h2 data-kz="Қаржылық дағдыларды ойын арқылы оқыту" data-en="Learn financial skills through play" data-ru="Изучайте финансовые навыки через игру">Қаржылық дағдыларды ойын арқылы оқыту</h2>
+          <p class="muted" data-kz="Күнделікті миссиялар, викториналар және мини-ойындар." data-en="Daily missions, quizzes and mini-games." data-ru="Ежедневные задания, викторины и мини-игры.">Күнделікті миссиялар, викториналар және мини-ойындар.</p>
 
-</main>
-<div id="modal" class="modal" style="display:none"></div>
+          <div class="cta-row">
+            <button class="btn primary" id="startMission" data-kz="Миссияны бастау" data-en="Start Mission" data-ru="Начать миссию">Миссияны бастау</button>
+            <button class="btn" id="openGames" data-kz="Ойындар" data-en="Games" data-ru="Игры">Ойындар</button>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <div class="points-panel card small">
+            <div class="points-top">
+              <img src="coin.svg" class="coin-small" alt="coin">
+              <div>
+                <div class="label" data-kz="Сенің ұпайың" data-en="Your points" data-ru="Твои баллы">Сенің ұпайың</div>
+                <div id="points" class="points-amount">120</div>
+              </div>
+            </div>
+            <div class="progress">
+              <div class="progress-label" id="progressLabel">Келесі деңгейге: 380 ұпай қалды</div>
+              <div class="progress-bar"><div id="progressFill" style="width:20%"></div></div>
+            </div>
+          </div>
+
+          <div class="avatar-panel card small">
+            <div class="label" data-kz="Аватар таңда" data-en="Choose avatar" data-ru="Выбрать аватар">Аватар таңда</div>
+            <div class="avatars" id="avatarList">
+              <!-- avatars injected by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="missions card">
+        <h3 data-kz="Күнделікті миссия" data-en="Daily mission" data-ru="Ежедневная миссия">Күнделікті миссия</h3>
+        <div class="mission-grid">
+          <div class="mission">
+            <h4 data-kz="Викторина: Жарнама және сенім" data-en="Quiz: Ads & Trust" data-ru="Викторина: Реклама и доверие">Викторина: Жарнама және сенім</h4>
+            <p class="muted" data-kz="5 сұрақ — 50 ұпай" data-en="5 questions — 50 pts" data-ru="5 вопросов — 50 баллов">5 сұрақ — 50 ұпай</p>
+            <button class="btn small" data-action="doMission" data-points="50" data-kz="Ойнау" data-en="Play" data-ru="Играть">Ойнау</button>
+          </div>
+
+          <div class="mission">
+            <h4 data-kz="Мини-ойын: Монета жина" data-en="Mini-game: Collect coins" data-ru="Мини-игра: Собирать монеты">Мини-ойын: Монета жина</h4>
+            <p class="muted" data-kz="Тезірек — 80 ұпай" data-en="Fast — 80 pts" data-ru="Быстро — 80 баллов">Тезірек — 80 ұпай</p>
+            <button class="btn small" data-action="doMission" data-points="80" data-kz="Ойнату" data-en="Play" data-ru="Играть">Ойнату</button>
+          </div>
+
+          <div class="mission">
+            <h4 data-kz="Сабақ: Бюджет негіздері" data-en="Lesson: Budget Basics" data-ru="Урок: Основы бюджета">Сабақ: Бюджет негіздері</h4>
+            <p class="muted" data-kz="Видео: 6 минут — 40 ұпай" data-en="Video: 6 min — 40 pts" data-ru="Видео: 6 мин — 40 баллов">Видео: 6 минут — 40 ұпай</p>
+            <button class="btn small" data-action="doMission" data-points="40" data-kz="Көру" data-en="Watch" data-ru="Смотреть">Көру</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="games card" id="gamesSection">
+        <h3 data-kz="Мини-ойындар" data-en="Mini-games" data-ru="Мини-игры">Мини-ойындар</h3>
+        <div class="game-grid">
+          <div class="game-card">
+            <div class="game-thumb">🎯</div>
+            <div>
+              <h4 data-kz="Монета аңшысы" data-en="Coin Hunter" data-ru="Охотник за монетами">Монета аңшысы</h4>
+              <p class="muted" data-kz="Жылдамдылыққа негізделген" data-en="Speed-based" data-ru="На скорость">Жылдамдылыққа негізделген</p>
+            </div>
+            <button class="btn small" data-action="playGame" data-kz="Бастау" data-en="Start" data-ru="Старт">Бастау</button>
+          </div>
+
+          <div class="game-card">
+            <div class="game-thumb">🧠</div>
+            <div>
+              <h4 data-kz="Сауаттылық логикасы" data-en="Money Logic" data-ru="Логика денег">Сауаттылық логикасы</h4>
+              <p class="muted" data-kz="Проблемаларды шешу" data-en="Problem solving" data-ru="Решение задач">Проблемаларды шешу</p>
+            </div>
+            <button class="btn small" data-action="playGame" data-kz="Бастау" data-en="Start" data-ru="Старт">Бастау</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="videos card">
+        <h3 data-kz="Видео сабақтар" data-en="Video lessons" data-ru="Видео уроки">Видео сабақтар</h3>
+        <div class="video-grid">
+          <div class="video-card">
+            <div class="video-thumb">▶</div>
+            <div>
+              <h4 data-kz="Бюджет: қайдан бастау" data-en="Budget: Where to start" data-ru="Бюджет: с чего начать">Бюджет: қайдан бастау</h4>
+              <p class="muted" data-kz="6:12" data-en="6:12" data-ru="6:12">6:12</p>
+            </div>
+            <button class="btn small" data-action="watchVideo" data-points="40" data-kz="Көру" data-en="Watch" data-ru="Смотреть">Көру</button>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- RIGHT: Teacher / Parent panels -->
+    <aside class="card side-panel" id="sidePanel">
+      <h3 data-kz="Профиль" data-en="Profile" data-ru="Профиль">Профиль</h3>
+      <div class="profile card small">
+        <img src="avatar1.svg" class="profile-avatar" id="currentAvatar">
+        <div>
+          <div class="label" data-kz="Оқушы" data-en="Student" data-ru="Ученик">Оқушы</div>
+          <div id="studentName">Aigerim</div>
+          <div class="muted" id="studentClass" data-kz="Сынып: 5" data-en="Class: 5" data-ru="Класс: 5">Сынып: 5</div>
+        </div>
+      </div>
+
+      <div class="stats card small">
+        <h4 data-kz="Апта ішіндегі ұпай" data-en="Weekly points" data-ru="Баллы за неделю">Апта ішіндегі ұпай</h4>
+        <div class="stat-bar"><div class="bar-fill" style="width:45%"></div></div>
+        <p class="muted" id="weeklyPoints">45 ұпай</p>
+      </div>
+
+      <div class="teacher-overview card small" id="teacherOverview" style="display:none">
+        <h4>Teacher Panel (mock)</h4>
+        <p class="muted">Quick overview of students and points (demo UI)</p>
+        <ul id="studentList">
+          <li>Aigerim — 120</li>
+          <li>Bekzat — 85</li>
+          <li>Madina — 190</li>
+        </ul>
+      </div>
+
+      <div class="parent-card card small" id="parentCard">
+        <h4 data-kz="Ата-анаға" data-en="For parents" data-ru="Для родителей">Ата-анаға</h4>
+        <p class="muted" data-kz="Апта сайын есеп келеді." data-en="Weekly report sent." data-ru="Еженедельный отчет">Апта сайын есеп келеді.</p>
+        <button class="btn" id="downloadReport" data-kz="Есепті жүктеу" data-en="Download report" data-ru="Скачать отчет">Есепті жүктеу</button>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p class="muted">© QarzhyIQ 2025 — All rights reserved</p>
+    </div>
+  </footer>
+
 <script src="app.js"></script>
-</body></html>
-
-<audio id="coin-sound" src="coin.mp3"></audio>
-<audio id="error-sound" src="click.wav"></audio>
+</body>
+</html>
