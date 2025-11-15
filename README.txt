@@ -1,5 +1,6 @@
-Deploy guide:
-1) Create GitHub repo, push files.
-2) Frontend: Deploy to GitHub Pages / Netlify / Vercel (deploy frontend folder).
-3) Backend: Deploy server folder to Render/Heroku. Start: node server.js
-4) To connect frontend to backend, update fetch URLs in app.js to full backend URL.
+QarzhyIQ final package
+- frontend/: multi-theme, multi-language, AI helper (mascot+robot)
+- server/: demo static server
+How to run locally:
+1) unzip and open frontend/index.html in browser for static demo
+2) or run 'node server/server.js' to serve frontend via express (install node first)

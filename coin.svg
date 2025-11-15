@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
-  <circle cx="100" cy="100" r="90" fill="#FFD700" stroke="#c9a200" stroke-width="10"/>
-  <text x="100" y="125" font-size="70" font-family="Arial" fill="#c48b00" text-anchor="middle">₸</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120"><circle cx="60" cy="60" r="48" fill="#FFD700" stroke="#c9a200" stroke-width="6"/><text x="60" y="74" font-size="36" fill="#c48b00" text-anchor="middle">₸</text></svg>
